@@ -1,0 +1,51 @@
+
+CRIAR BANCO DE DADOS:
+mysql> CREATE DATABASE bd_loja;
+Query OK, 1 row affected (0.04 sec)
+
+SETAR O BANCO DE DADOS QUE SERÁ TRABALHADO:
+mysql> USE bd_loja;
+Database changed
+
+CRIAR TABELA:
+mysql> CREATE TABLE tb_produtos (
+id INT AUTO_INCREMENT PRIMARY KEY,
+NomeProduto VARCHAR(255),
+Categoria VARCHAR(255),
+QuantidadeEstoque INT,
+Valor DECIMAL
+);
+Query OK, 0 rows affected (0.04 sec)
+
+ALTERAR TABELA:
+mysql> ALTER TABLE
+tb_produtos
+ADD COLUMN Categoria VARCHAR(255);
+
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MOSTRAR DADOS DA TABELA:
+mysql> SELECT * FROM tb_produtos;
+Empty set (0.00 sec)
+
+MOSTRAR ESTRUTURA DA TABELA:
+mysql> DESCRIBE tb_produtos;
++-------------------+---------------+------+-----+---------+----------------+
+| Field             | Type          | Null | Key | Default | Extra          |
++-------------------+---------------+------+-----+---------+----------------+
+| id                | int           | NO   | PRI | NULL    | auto_increment |
+| NomeProduto       | varchar(255)  | YES  |     | NULL    |                |
+| QuantidadeEstoque | int           | YES  |     | NULL    |                |
+| Valor             | decimal(10,0) | YES  |     | NULL    |                |
+| Categoria         | varchar(255)  | YES  |     | NULL    |                |
++-------------------+---------------+------+-----+---------+----------------+
+5 rows in set (0.02 sec)
+
+
+LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.1\\Uploads\\base4.csv"
+INTO TABLE tb_produtos
+FIELDS TERMINATED BY ";"
+LINES TERMINATED BY "\n"
+IGNORE 1 ROWS
+(Produto, Quantidade, Valor);
